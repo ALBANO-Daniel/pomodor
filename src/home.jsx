@@ -1,7 +1,8 @@
 import * as React from "react";
-// import { useState } from "react";
+import { useState } from "react";
 import { Box, ThemeProvider } from "@mui/system";
 import { theme } from "./theme.js";
+import Pomodoro  from "./components/Pomodoro.jsx";
 
 // import AccessAlarmsIcon from "@mui/icons-material/AccessAlarms";
 import {
@@ -14,14 +15,15 @@ import {
 } from "@mui/material";
 // import { SendIcon } from "@mui/icons-material";
 
-export default function Pomodoro() {
-  // const [timer, setTimer] = useState(false);
 
 
-  function createTimer(obj) {
-    document.getElementById("timerPlace").innerHTML = `<Typography> ${obj} </Typography>;`;
-    console.log(obj)
-  }
+
+
+
+
+export default function PomodoroForm() {  
+  
+   const [timerSettings, setTimerSettings] = useState([]);
 
   function handleSubmit(e) {
     // Prevent the browser from reloading the page
@@ -39,13 +41,18 @@ export default function Pomodoro() {
     // You can work with it as a plain object.
     const formJson = Object.fromEntries(formData.entries());
     console.log(formJson); // (!) This doesn't include multiple select values
+    console.log(formJson.long_pause);
+    
 
     // Or you can get an array of name-value pairs.
     console.log([...formData.entries()]);
-    const formArray = [...formData.entries()];
+
+    // const formArray = [...formData.entries()];
 
     // Pomodoro();
-    createTimer(formArray);
+    setTimerSettings(formJson);
+
+    // document.getElementById("pomodoroBox").innerHTML = <Pomodoro settings={timerSettings} />; 
   }
 
   return (
@@ -93,11 +100,11 @@ export default function Pomodoro() {
             >
               <form method="post" onSubmit={handleSubmit}>
                 <FormControl sx={{ m: 1.5 }}>
-                  <FormLabel id="work-time">Work periods</FormLabel>
+                  <FormLabel id="workTime">Work periods</FormLabel>
                   <RadioGroup
                     aria-labelledby="choose work time"
                     defaultValue={25}
-                    name="work-time"
+                    name="workTime"
                   >
                     <FormControlLabel
                       value="20"
@@ -118,11 +125,11 @@ export default function Pomodoro() {
                 </FormControl>
 
                 <FormControl sx={{ m: 1.5 }}>
-                  <FormLabel id="break-time">Break periods</FormLabel>
+                  <FormLabel id="breakTime">Break periods</FormLabel>
                   <RadioGroup
                     aria-labelledby="choose break time"
                     defaultValue={5}
-                    name="break-time"
+                    name="breakTime"
                   >
                     <FormControlLabel
                       value="5"
@@ -168,11 +175,11 @@ export default function Pomodoro() {
                 </FormControl>
 
                 <FormControl sx={{ m: 1.5 }}>
-                  <FormLabel id="long-pause">long pause</FormLabel>
+                  <FormLabel id="longPause">long pause</FormLabel>
                   <RadioGroup
                     aria-labelledby="choose end of cicle break time"
                     defaultValue={25}
-                    name="long-pause"
+                    name="longPause"
                   >
                     <FormControlLabel
                       value="25"
@@ -189,9 +196,9 @@ export default function Pomodoro() {
                       control={<Radio />}
                       label="35min"
                     />
-                    {console.log(FormControlLabel.value)}
                   </RadioGroup>
                 </FormControl>
+
                 <Box
                   sx={{
                     p: 2,
@@ -205,10 +212,14 @@ export default function Pomodoro() {
                 </Box>
               </form>
             </Box>
+
             <Box id="timerPlace">
+                  <Pomodoro settings={timerSettings} />
             </Box>
+            
           </Box>
         </Box>
+
       </div>
     </ThemeProvider>
   );

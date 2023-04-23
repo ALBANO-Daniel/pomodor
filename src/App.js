@@ -1,11 +1,11 @@
 // import { Button, Box, Typography, Paper } from "@mui/material";
-import Pomodoro from "./Pomodoro";
+import Home from "./home";
 
 function App() {
   return (
     <div className="app">
       <div className="content">
-        <Pomodoro />
+        <Home />
       </div>
     </div>
   );
