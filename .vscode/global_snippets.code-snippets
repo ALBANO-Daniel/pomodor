@@ -17,16 +17,16 @@
   // }
 
   "Console Log debug": {
-    "scope": "global",
+    "scope": "javascript, typescript",
     "prefix": ["conso", "console.log helper"],
     "body": ["console.log('======DEBUG======='${var})"],
     "description": "console log helper"
   },
 
   "mui standard box": {
-    "scope": "global",
+    "scope": "javascript, typescript",
     "prefix": ["mui box", "box"],
-    "body": ["console.log('======DEBUG======='${asdasdasdvar})"],
+    "body": ["<Box sx={{ display: ${display} bgcolor: ${color} ariaLabel: ${description }}> </Box>"],
     "description": "mui box helper"
   }
 }

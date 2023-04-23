@@ -216,7 +216,7 @@ export default function PomodoroForm() {
             <Box id="timerPlace">
                   <Pomodoro settings={timerSettings} />
             </Box>
-            
+
           </Box>
         </Box>
 
