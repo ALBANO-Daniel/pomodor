@@ -1,4 +1,3 @@
-// import { Button, Box, Typography, Paper } from "@mui/material";
 import Home from "./home";
 
 function App() {
