@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
 import { Box, ThemeProvider } from "@mui/system";
-import { theme } from "./theme.js";
-import Pomodoro  from "./components/Pomodoro.jsx";
+import { theme } from "../theme.js";
+import Pomodoro  from "./Pomodoro.jsx";
 
 // import AccessAlarmsIcon from "@mui/icons-material/AccessAlarms";
 import {

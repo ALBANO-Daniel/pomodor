@@ -3,7 +3,7 @@ import { useTimer } from 'react-timer-hook';
 import { stageFinished } from  './Pomodoro';
 
 
-export default function MyTimer({ expiryTimestamp }) {
+export default function Timer({ expiryTimestamp }) {
     const {
       seconds,
       minutes,
@@ -14,7 +14,7 @@ export default function MyTimer({ expiryTimestamp }) {
       pause, 
       resume,
       restart,
-    } = useTimer({ expiryTimestamp, onExpire: stageFinished() });
+    } = useTimer({ expiryTimestamp, onExpire: {stageFinished} });  // can i put a return as value on onExpire ex= <Pomodoro>
     
   
     return (
