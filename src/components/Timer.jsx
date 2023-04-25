@@ -1,22 +1,27 @@
 import React from 'react';
 import { useTimer } from 'react-timer-hook';
-import { stageFinished } from  './Pomodoro';
 
 
-export default function Timer({ expiryTimestamp }) {
-    const {
-      seconds,
+export default function Timer({ expiryTimestamp , onExpire }) {
+
+  console.log(expiryTimestamp);
+
+    const timer = useTimer({ expiryTimestamp, onExpire });  // can i put a return as value on onExpire ex= <Pomodoro
+    
+    const log = JSON.stringify(timer, null, 2)
+    console.log(log);
+
+    const {seconds,
       minutes,
       hours,
       days,
       isRunning,
       start,
       pause, 
-      resume,
-      restart,
-    } = useTimer({ expiryTimestamp, onExpire: {stageFinished} });  // can i put a return as value on onExpire ex= <Pomodoro>
-    
-  
+      resume} = timer;
+
+      
+
     return (
         <div style={{textAlign: 'center'}}>
 
@@ -32,12 +37,7 @@ export default function Timer({ expiryTimestamp }) {
         <p>{isRunning ? <button onClick={pause}>Pause</button> : <button onClick={resume}>Resume</button>}</p>
   
   
-        <button onClick={() => { 
-          // Restarts to 5 minutes timer
-          const time = new Date();
-          time.setSeconds(time.getSeconds() + 300);
-          restart(time)
-        }}>Restart</button>
+        
       </div>
     );
   }

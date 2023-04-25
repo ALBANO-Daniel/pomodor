@@ -17,13 +17,9 @@ import {
 
 
 
-
-
-
-
 export default function PomodoroForm() {  
   
-   const [timerSettings, setTimerSettings] = useState([]);
+   const [timerSettings, setTimerSettings] = useState();
 
   function handleSubmit(e) {
     // Prevent the browser from reloading the page
@@ -212,9 +208,8 @@ export default function PomodoroForm() {
                 </Box>
               </form>
             </Box>
-
             <Box id="timerPlace">
-                  <Pomodoro settings={timerSettings} />
+              { timerSettings  && <Pomodoro settings={timerSettings} /> }
             </Box>
 
           </Box>

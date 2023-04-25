@@ -4,13 +4,16 @@ import { Box } from "@mui/system";
 import React from "react";
 import Timer from "./Timer";
 import PomodoroForm from "./PomodoForm";
+import { Button, Typography } from "@mui/material";
+
+
 
 export default function Pomodoro(props) {
 
   const { workTime, breakTime, bigPause } = props.settings;
 
   const pomodoroStages = [
-    workTime,
+    0.2,
     breakTime,
     workTime,
     breakTime,
@@ -29,19 +32,26 @@ export default function Pomodoro(props) {
 
   // end of timer -> alert  -> onClick ok -> new timer
 
-
+  function stageFinished() {
     if (index <= 7) {
       setIndex(index + 1);
     } else {
       setIndex(0);
       setReset(true);
     }
+  }
 
+  const time = new Date();
+  time.setSeconds(time.getSeconds() + pomodoroStagesInSeconds[index] ); // 10 minutes timer
+ 
   return (
       reset === false ? (
-        <Timer expiryTimestamp={pomodoroStagesInSeconds[index]} />
+        <Timer expiryTimestamp={time} onExpire={stageFinished} key={index} />
       ) : (
-        <PomodoroForm />
+        <Box>
+          <Typography>Pomodoro Finished!!! </Typography>
+          <Button onClick={() => { setReset(false) } }>start again</Button>
+        </Box>
       )
   );
 }
