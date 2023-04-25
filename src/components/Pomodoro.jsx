@@ -6,10 +6,7 @@ import Timer from "./Timer";
 import PomodoroForm from "./PomodoForm";
 import { Button, Typography } from "@mui/material";
 
-
-
 export default function Pomodoro(props) {
-
   const { workTime, breakTime, bigPause } = props.settings;
 
   const pomodoroStages = [
@@ -42,16 +39,24 @@ export default function Pomodoro(props) {
   }
 
   const time = new Date();
-  time.setSeconds(time.getSeconds() + pomodoroStagesInSeconds[index] ); // 10 minutes timer
- 
-  return (
-      reset === false ? (
-        <Timer expiryTimestamp={time} onExpire={stageFinished} key={index} />
-      ) : (
-        <Box>
-          <Typography>Pomodoro Finished!!! </Typography>
-          <Button onClick={() => { setReset(false) } }>start again</Button>
-        </Box>
-      )
+  time.setSeconds(time.getSeconds() + pomodoroStagesInSeconds[index]); // 10 minutes timer
+
+  return reset === false ? (
+    <>
+      {(index === 0) && <Timer expiryTimestamp={time} onExpire={stageFinished} />}
+      {(index === 1) && <Timer expiryTimestamp={time} onExpire={stageFinished} />}
+      {(index === 2) && <Timer expiryTimestamp={time} onExpire={stageFinished} />}
+    </>
+  ) : (
+    <Box>
+      <Typography>Pomodoro Finished!!! </Typography>
+      <Button
+        onClick={() => {
+          setReset(false);
+        }}
+      >
+        start again
+      </Button>
+    </Box>
   );
 }

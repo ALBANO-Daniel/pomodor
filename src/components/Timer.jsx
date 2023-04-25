@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
 
 
 export default function Timer({ expiryTimestamp , onExpire }) {
 
-  console.log(expiryTimestamp);
+  console.log("render");
 
     const timer = useTimer({ expiryTimestamp, onExpire });  // can i put a return as value on onExpire ex= <Pomodoro
     
-    const log = JSON.stringify(timer, null, 2)
-    console.log(log);
-
+    
+    
+    useEffect(() => {
+      console.log(" comecei ")
+    
+      return () => {
+        console.log( " acabei ")
+      }
+    }, [])
+    
     const {seconds,
       minutes,
       hours,
