@@ -42,11 +42,7 @@ export default function Pomodoro(props) {
   time.setSeconds(time.getSeconds() + pomodoroStagesInSeconds[index]); // 10 minutes timer
 
   return reset === false ? (
-    <>
-      {(index === 0) && <Timer expiryTimestamp={time} onExpire={stageFinished} />}
-      {(index === 1) && <Timer expiryTimestamp={time} onExpire={stageFinished} />}
-      {(index === 2) && <Timer expiryTimestamp={time} onExpire={stageFinished} />}
-    </>
+      <Timer expiryTimestamp={time} onExpire={stageFinished} key={index} />
   ) : (
     <Box>
       <Typography>Pomodoro Finished!!! </Typography>

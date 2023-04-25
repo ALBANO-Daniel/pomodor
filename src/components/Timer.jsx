@@ -6,8 +6,14 @@ export default function Timer({ expiryTimestamp , onExpire }) {
 
   console.log("render");
 
-    const timer = useTimer({ expiryTimestamp, onExpire });  // can i put a return as value on onExpire ex= <Pomodoro
-    
+    const {seconds,
+      minutes,
+      hours,
+      days,
+      isRunning,
+      start,
+      pause, 
+      resume } = useTimer({ expiryTimestamp, onExpire });  // can i put a return as value on onExpire ex= <Pomodoro
     
     
     useEffect(() => {
@@ -17,17 +23,6 @@ export default function Timer({ expiryTimestamp , onExpire }) {
         console.log( " acabei ")
       }
     }, [])
-    
-    const {seconds,
-      minutes,
-      hours,
-      days,
-      isRunning,
-      start,
-      pause, 
-      resume} = timer;
-
-      
 
     return (
         <div style={{textAlign: 'center'}}>
