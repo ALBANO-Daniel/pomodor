@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box } from "@mui/system";
 // import { theme } from "../theme.js";
 import React from "react";
-import Timer from "./Timer";
+import Timer from "./PomodoroTimer";
 import PomodoroForm from "./PomodoForm";
 import { Button, Typography } from "@mui/material";
 
@@ -30,7 +30,7 @@ export default function Pomodoro(props) {
   // end of timer -> alert  -> onClick ok -> new timer
 
   function stageFinished() {
-    if (index <= 7) {
+    if (index < 7) {
       setIndex(index + 1);
     } else {
       setIndex(0);

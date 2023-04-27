@@ -3,17 +3,17 @@ import { useTimer } from 'react-timer-hook';
 
 
 export default function Timer({ expiryTimestamp , onExpire }) {
-
+ 
   console.log("render");
 
-    const {seconds,
+    const {seconds, 
       minutes,
       hours,
       days,
       isRunning,
       start,
       pause, 
-      resume } = useTimer({ expiryTimestamp, onExpire });  // can i put a return as value on onExpire ex= <Pomodoro
+      resume } = useTimer({ expiryTimestamp, onExpire });
     
     
     useEffect(() => {
