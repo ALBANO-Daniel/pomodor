@@ -3,21 +3,21 @@ import { Box } from "@mui/system";
 // import { theme } from "../theme.js";
 import React from "react";
 import Timer from "./PomodoroTimer";
-import PomodoroForm from "./PomodoForm";
+// import PomodoroForm from "./PomodoForm";
 import { Button, Typography } from "@mui/material";
 
 export default function Pomodoro(props) {
   const { workTime, breakTime, bigPause } = props.settings;
 
   const pomodoroStages = [
-    0.2,
-    breakTime,
-    workTime,
-    breakTime,
-    workTime,
-    breakTime,
-    workTime,
-    bigPause,
+    0.1,//workTime,
+    0.1,//breakTime,
+    0.1,//workTime,
+    0.1,//breakTime,
+    0.1,//workTime,
+    0.1,//breakTime,
+    0.1,//workTime,
+    0.2,//bigPause,
   ];
 
   const pomodoroStagesInSeconds = pomodoroStages.map((num) => num * 60);
@@ -39,7 +39,7 @@ export default function Pomodoro(props) {
   }
 
   const time = new Date();
-  time.setSeconds(time.getSeconds() + pomodoroStagesInSeconds[index]); // 10 minutes timer
+  time.setSeconds(time.getSeconds() + pomodoroStagesInSeconds[index]);
 
   return reset === false ? (
       <Timer expiryTimestamp={time} onExpire={stageFinished} key={index} />

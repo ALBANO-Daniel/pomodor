@@ -1,45 +1,34 @@
-import React, { useEffect } from 'react';
-import { useTimer } from 'react-timer-hook';
+import React from "react";
+import { useTimer } from "react-timer-hook";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import PauseCircleIcon from "@mui/icons-material/PauseCircle";
+import { Box, Typography } from "@mui/material";
 
+export default function Timer({ expiryTimestamp, onExpire }) {
+  const {
+    seconds,
+    minutes,
+    isRunning,
+    pause,
+    resume,
+  } = useTimer({ expiryTimestamp, onExpire });
 
-export default function Timer({ expiryTimestamp , onExpire }) {
- 
-  console.log("render");
+  return (
+    <Box sx={{ textAlign: "center" }}>
+      <Typography variant="h4">Pomodoro</Typography>
 
-    const {seconds, 
-      minutes,
-      hours,
-      days,
-      isRunning,
-      start,
-      pause, 
-      resume } = useTimer({ expiryTimestamp, onExpire });
-    
-    
-    useEffect(() => {
-      console.log(" comecei ")
-    
-      return () => {
-        console.log( " acabei ")
-      }
-    }, [])
+      <Box style={{ fontSize: "100px" }}>
+        <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
+        <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+      </Box>
 
-    return (
-        <div style={{textAlign: 'center'}}>
-
-        <h1>react-timer-hook </h1>
-        <p>Timer Demo</p>
-  
-        <div style={{fontSize: '100px'}}>
-          {days}<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-        </div>
-  
-  
-        <button onClick={start}>Start</button>
-        <p>{isRunning ? <button onClick={pause}>Pause</button> : <button onClick={resume}>Resume</button>}</p>
-  
-  
-        
-      </div>
-    );
-  }
+      <Box>
+        {isRunning ? (
+          <PauseCircleIcon fontSize="large" onClick={pause} />
+        ) : (
+          <PlayCircleIcon fontSize="large" onClick={resume} />
+        )}
+      </Box>
+    </Box>
+  );
+}

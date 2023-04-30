@@ -3,8 +3,6 @@ import { useState } from "react";
 import { Box, ThemeProvider } from "@mui/system";
 import { theme } from "../theme.js";
 import Pomodoro  from "./Pomodoro.jsx";
-
-// import AccessAlarmsIcon from "@mui/icons-material/AccessAlarms";
 import {
   Button,
   FormControl,
@@ -13,8 +11,6 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-// import { SendIcon } from "@mui/icons-material";
-
 
 
 export default function PomodoroForm() {  
@@ -22,33 +18,13 @@ export default function PomodoroForm() {
    const [timerSettings, setTimerSettings] = useState();
 
   function handleSubmit(e) {
-    // Prevent the browser from reloading the page
     e.preventDefault();
     // Read the form data
     const form = e.target;
     const formData = new FormData(form);
-
-    // You can pass formData as a fetch body directly:
-    // fetch('/some-api', { method: form.method, body: formData });
-
-    // You can generate a URL out of it, as the browser does by default:
-    console.log(new URLSearchParams(formData).toString());
-
-    // You can work with it as a plain object.
     const formJson = Object.fromEntries(formData.entries());
-    console.log(formJson); // (!) This doesn't include multiple select values
-    console.log(formJson.long_pause);
     
-
-    // Or you can get an array of name-value pairs.
-    console.log([...formData.entries()]);
-
-    // const formArray = [...formData.entries()];
-
-    // Pomodoro();
     setTimerSettings(formJson);
-
-    // document.getElementById("pomodoroBox").innerHTML = <Pomodoro settings={timerSettings} />; 
   }
 
   return (
@@ -202,11 +178,13 @@ export default function PomodoroForm() {
                     justifyContent: "center",
                   }}
                 >
-                  <Button variant="contained" type="submit">
+                  <Button variant="contained" type="submit" >
                     Create Pomodoro
                   </Button>
+                  
                 </Box>
               </form>
+
             </Box>
             <Box id="timerPlace">
               { timerSettings  && <Pomodoro settings={timerSettings} /> }
