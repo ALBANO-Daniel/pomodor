@@ -1,8 +1,7 @@
 import * as React from "react";
-import { useState } from "react";
 import { Box, ThemeProvider } from "@mui/system";
 import { theme } from "../theme.js";
-import Pomodoro  from "./Pomodoro.jsx";
+
 import {
   Button,
   FormControl,
@@ -13,9 +12,7 @@ import {
 } from "@mui/material";
 
 
-export default function PomodoroForm() {  
-  
-   const [timerSettings, setTimerSettings] = useState();
+function PomodoroForm( { handleSettings } ) {  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,8 +20,7 @@ export default function PomodoroForm() {
     const form = e.target;
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
-    
-    setTimerSettings(formJson);
+    handleSettings(formJson);
   }
 
   return (
@@ -184,16 +180,12 @@ export default function PomodoroForm() {
                   
                 </Box>
               </form>
-
             </Box>
-            <Box id="timerPlace">
-              { timerSettings  && <Pomodoro settings={timerSettings} /> }
-            </Box>
-
           </Box>
         </Box>
-
       </div>
     </ThemeProvider>
   );
 }
+
+export default PomodoroForm;

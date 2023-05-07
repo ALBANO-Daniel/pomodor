@@ -1,10 +1,12 @@
-import Home from "./components/PomodoForm";
+import Pomodoro from "./pages/Pomodoro";
 
 function App() {
+
+  
   return (
     <div className="app">
       <div className="content">
-        <Home />
+        <Pomodoro />
       </div>
     </div>
   );
