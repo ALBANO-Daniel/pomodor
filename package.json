@@ -1,4 +1,5 @@
 {
+  "homepage": "https://albano-daniel.github.io/pomodor",
   "name": "pomodoro",
   "version": "0.1.0",
   "private": true,
@@ -17,7 +18,6 @@
     "use-sound": "^4.0.1",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://albano-daniel.github.io/pomodor/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
