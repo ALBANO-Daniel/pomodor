@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/pomodor/static/css/main.3e0fc427.css",
+    "main.js": "/pomodor/static/js/main.ca85d69e.js",
+    "static/media/1.m4a": "/pomodor/static/media/1.1822a0b356e1ac8cb3ba.m4a",
+    "index.html": "/pomodor/index.html",
+    "main.3e0fc427.css.map": "/pomodor/static/css/main.3e0fc427.css.map",
+    "main.ca85d69e.js.map": "/pomodor/static/js/main.ca85d69e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3e0fc427.css",
+    "static/js/main.ca85d69e.js"
+  ]
+}
