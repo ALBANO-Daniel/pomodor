@@ -2,7 +2,7 @@ import React from "react";
 import { useTimer } from "react-timer-hook";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
-import { Box } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
 export default function Timer({ expiryTimestamp, onExpire }) {
   const { seconds, minutes, isRunning, pause, resume } = useTimer({
@@ -11,35 +11,17 @@ export default function Timer({ expiryTimestamp, onExpire }) {
   });
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <Box
-        sx={{
-          textAlign: "center",
-          bgcolor: "background.paper",
-          boxShadow: 1,
-          borderRadius: 2,
-          p: 2,
-          minWidth: 300,
-        }}
-      >
-        <Box style={{ fontSize: "100px" }}>
-          <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
-          <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
-        </Box>
-
-        <Box>
+        <Box sx={{ display: "flex", fontSize: "100px", justifyContent: "center" }}>
+          <Stack sx={{ mr: 2 }}>
           {isRunning ? (
-            <PauseCircleIcon fontSize="large" onClick={pause} />
+            <PauseCircleIcon color="success" fontSize="x-large" onClick={pause} />
           ) : (
-            <PlayCircleIcon fontSize="large" onClick={resume} />
+            <PlayCircleIcon color="success" fontSize="x-large" onClick={resume} />
           )}
+          </Stack>
+          <Typography variant="h1" paddingTop={1}>
+          {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+          </Typography>
         </Box>
-      </Box>
-    </Box>
   );
 }

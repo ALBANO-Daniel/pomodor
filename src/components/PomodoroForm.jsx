@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Box, ThemeProvider } from "@mui/system";
-import { theme } from "../theme.js";
+import { Box } from "@mui/system";
 
 import {
   Button,
@@ -12,7 +11,7 @@ import {
 } from "@mui/material";
 
 
-function PomodoroForm( { handleSettings } ) {  
+function PomodoroForm( { handleSettings, toggleTimer, pomodoroFinished } ) {  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -24,24 +23,8 @@ function PomodoroForm( { handleSettings } ) {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <div className="pomodoro">
-        <Box
-          sx={{
-            display: "flex",
-            p: 5,
-            justifyContent: "center",
-          }}
-        >
-          <Box
-            sx={{
-              bgcolor: "background.paper",
-              boxShadow: 1,
-              borderRadius: 2,
-              p: 2,
-              minWidth: 300,
-            }}
-          >
+
+      <Box sx={{ alignItems: "center"}}>
             <Box sx={{ color: "text.secondary" }}>deani.dev</Box>
             <Box
               sx={{ color: "text.primary", fontSize: 34, fontWeight: "medium" }}
@@ -66,8 +49,9 @@ function PomodoroForm( { handleSettings } ) {
                 justifyContent: "space-between",
               }}
             >
-              <form method="post" onSubmit={handleSubmit}>
-                <FormControl sx={{ m: 1.5 }}>
+              <form method="post"  onSubmit={handleSubmit}>
+
+                <FormControl disabled={toggleTimer} sx={{ m: 1.5 }}>
                   <FormLabel id="workTime">Work periods</FormLabel>
                   <RadioGroup
                     aria-labelledby="choose work time"
@@ -76,23 +60,23 @@ function PomodoroForm( { handleSettings } ) {
                   >
                     <FormControlLabel
                       value="20"
-                      control={<Radio />}
+                      control={<Radio color="success" />}
                       label="20min"
                     />
                     <FormControlLabel
                       value="25"
-                      control={<Radio />}
+                      control={<Radio color="success" />}
                       label="25min"
                     />
                     <FormControlLabel
                       value="30"
-                      control={<Radio />}
+                      control={<Radio color="success"/>}
                       label="30min"
                     />
                   </RadioGroup>
                 </FormControl>
 
-                <FormControl sx={{ m: 1.5 }}>
+                <FormControl disabled={toggleTimer} sx={{ m: 1.5 }}>
                   <FormLabel id="breakTime">Break periods</FormLabel>
                   <RadioGroup
                     aria-labelledby="choose break time"
@@ -101,68 +85,43 @@ function PomodoroForm( { handleSettings } ) {
                   >
                     <FormControlLabel
                       value="5"
-                      control={<Radio />}
+                      control={<Radio color="success"/>}
                       label="5min"
                     />
                     <FormControlLabel
                       value="7"
-                      control={<Radio />}
+                      control={<Radio color="success"/>}
                       label="7min"
                     />
                     <FormControlLabel
                       value="10"
-                      control={<Radio />}
+                      control={<Radio color="success"/>}
                       label="10min"
                     />
                   </RadioGroup>
                 </FormControl>
 
-                <FormControl sx={{ m: 1.5 }}>
-                  <FormLabel id="repeats">Repeats</FormLabel>
-                  <RadioGroup
-                    aria-labelledby="choose how many"
-                    defaultValue={1}
-                    name="repeats"
-                  >
-                    <FormControlLabel
-                      value="1"
-                      control={<Radio />}
-                      label="1x"
-                    />
-                    <FormControlLabel
-                      value="2"
-                      control={<Radio />}
-                      label="2x"
-                    />
-                    <FormControlLabel
-                      value="3"
-                      control={<Radio />}
-                      label="3x"
-                    />
-                  </RadioGroup>
-                </FormControl>
-
-                <FormControl sx={{ m: 1.5 }}>
+                <FormControl disabled={toggleTimer} sx={{ m: 1.5 }}>
                   <FormLabel id="longPause">long pause</FormLabel>
                   <RadioGroup
                     aria-labelledby="choose end of cicle break time"
-                    defaultValue={25}
+                    defaultValue={15}
                     name="longPause"
                   >
                     <FormControlLabel
+                      value="15"
+                      control={<Radio color="success"/>}
+                      label="15min"
+                    />
+                    <FormControlLabel
+                      value="20"
+                      control={<Radio color="success"/>}
+                      label="20min"
+                    />
+                    <FormControlLabel
                       value="25"
-                      control={<Radio />}
+                      control={<Radio color="success"/>}
                       label="25min"
-                    />
-                    <FormControlLabel
-                      value="30"
-                      control={<Radio />}
-                      label="30min"
-                    />
-                    <FormControlLabel
-                      value="35"
-                      control={<Radio />}
-                      label="35min"
                     />
                   </RadioGroup>
                 </FormControl>
@@ -174,17 +133,19 @@ function PomodoroForm( { handleSettings } ) {
                     justifyContent: "center",
                   }}
                 >
-                  <Button variant="contained" type="submit" >
+                  { toggleTimer === false ? 
+                  <Button variant="contained" type="submit" color="success">
                     Create Pomodoro
-                  </Button>
+                  </Button> 
+                  :
+                  <Button variant="contained" disabled={pomodoroFinished} type="submit" color="success">End Pomodoro</Button>
+                  }
                   
                 </Box>
               </form>
             </Box>
-          </Box>
-        </Box>
-      </div>
-    </ThemeProvider>
+      </Box>
+
   );
 }
 

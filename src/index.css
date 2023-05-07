@@ -17,3 +17,9 @@ body,
   align-items: center;
   align-content: center;
 }
+
+
+ /* to change RadioGroup label text color ( on focused ) */
+.css-u4tvz2-MuiFormLabel-root.Mui-focused{
+  color: #2e7d32 !important;
+}
