@@ -93,6 +93,7 @@ export default function Pomodoro() {
                     expiryTimestamp={time}
                     onExpire={stageFinished}
                     key={index}
+                    index={index}
                   />
                 </Box>
               ) : (
