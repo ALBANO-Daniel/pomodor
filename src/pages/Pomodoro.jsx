@@ -3,7 +3,8 @@ import React from "react";
 import PomodoroTimer from "../components/PomodoroTimer";
 import PomodoroForm from "../components/PomodoroForm";
 
-import alarmSound from "../sounds/1.m4a";
+// import alarmSound from "../sounds/default.m4a";
+import alarmSound from "../sounds/windowsXP.opus";
 
 import { theme } from "../theme.js";
 import { Alert,  Typography } from "@mui/material";
@@ -18,7 +19,7 @@ export default function Pomodoro() {
   const [index, setIndex] = useState(0);
   const [reset, setReset] = useState(false);
 
-  const { workTime, breakTime, bigPause } = timerSettings;
+  const { workTime, breakTime, longPause } = timerSettings;
 
   const pomodoroStages = [
     workTime,
@@ -28,7 +29,7 @@ export default function Pomodoro() {
     workTime,
     breakTime,
     workTime,
-    bigPause,
+    longPause,
   ];
 
   const pomodoroStagesInSeconds = pomodoroStages.map((num) => num * 60);
@@ -79,13 +80,12 @@ export default function Pomodoro() {
               toggleTimer={toggleTimer}
               pomodoroFinished={pomodoroFinished}
             />
-
             {toggleTimer &&
               (reset === false ? (
                 <Box sx={{ alignContent: "center", pt: 3 }}>
                   <Box sx={{ pb: 5 }}>
                     <Typography color="grey" paddingBottom={1}>
-                      current progress:{" "}
+                      current progress:
                     </Typography>
                     <PomodoroChips index={index} />
                   </Box>
