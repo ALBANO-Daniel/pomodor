@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/pomodor/static/css/main.3e0fc427.css",
-    "main.js": "/pomodor/static/js/main.b17f6ba9.js",
+    "main.js": "/pomodor/static/js/main.1bac634e.js",
     "static/media/windowsXP.opus": "/pomodor/static/media/windowsXP.2b1def33ca5d8a60919b.opus",
     "index.html": "/pomodor/index.html",
     "main.3e0fc427.css.map": "/pomodor/static/css/main.3e0fc427.css.map",
-    "main.b17f6ba9.js.map": "/pomodor/static/js/main.b17f6ba9.js.map"
+    "main.1bac634e.js.map": "/pomodor/static/js/main.1bac634e.js.map"
   },
   "entrypoints": [
     "static/css/main.3e0fc427.css",
-    "static/js/main.b17f6ba9.js"
+    "static/js/main.1bac634e.js"
   ]
 }
