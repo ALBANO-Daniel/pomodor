@@ -10,13 +10,12 @@ export default function PomodoroTimer({ expiryTimestamp, onExpire, index }) {
     onExpire,
   });
 
-
   let titleMinutes = minutes < 10 ?`0${minutes}` : minutes;
   let titleSeconds = seconds < 10 ? `0${seconds}` : seconds;
   let titleTime = titleMinutes + ":" + titleSeconds;
   // work periods have pair indexes => pomodoroStages(Pomodoro.jsx)
   document.title = index % 2 ?  titleTime + " | pause" : titleTime + " | work" ;
-  
+
 
   return (
         <Box sx={{ display: "flex", fontSize: "100px", justifyContent: "center" }}>

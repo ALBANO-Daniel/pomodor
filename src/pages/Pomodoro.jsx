@@ -42,7 +42,7 @@ export default function Pomodoro() {
   }
 
   function stageFinished() {
-    new Audio(alarmSound).play();
+    new Audio(alarmSound).play();  // CAN BE EXTERNALIZED!! RFC ( handle audio + sound user choice)
     if (index < 7) {
       setIndex(index + 1);
     } else {
