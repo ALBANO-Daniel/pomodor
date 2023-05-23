@@ -7,7 +7,7 @@ import PomodoroForm from "../components/PomodoroForm";
 import alarmSound from "../sounds/windowsXP.opus";
 
 import { theme } from "../theme.js";
-import { Alert,  Typography } from "@mui/material";
+import { Alert, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import PomodoroChips from "../components/PomodoroChips";
 import { ThemeProvider } from "@emotion/react";
@@ -42,7 +42,7 @@ export default function Pomodoro() {
   }
 
   function stageFinished() {
-    new Audio(alarmSound).play();  // CAN BE EXTERNALIZED!! RFC ( handle audio + sound user choice)
+    new Audio(alarmSound).play(); // CAN BE EXTERNALIZED!! RFC ( handle audio + sound user choice)
     if (index < 7) {
       setIndex(index + 1);
     } else {
@@ -61,8 +61,8 @@ export default function Pomodoro() {
         <Box
           sx={{
             display: "flex",
-            p: 1,
-            justifyContent: "center",
+            p: 3,
+            justifyContent: "center"
           }}
         >
           <Box
@@ -70,9 +70,13 @@ export default function Pomodoro() {
               bgcolor: "background.paper",
               boxShadow: 1,
               borderRadius: 2,
-              p: 5,
-              width: "400px",
+              p: [2,5],
+              width: [250, 500],
               minWidth: 300,
+              // display: 'flex',
+              // flexDirection: 'column',
+              // justifyContent: 'center',
+
             }}
           >
             <PomodoroForm
